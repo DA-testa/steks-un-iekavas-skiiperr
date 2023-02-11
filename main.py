@@ -6,25 +6,37 @@ Bracket = namedtuple("Bracket", ["char", "position"])
 
 
 def are_matching(left, right):
-    return (left + right) in ["()", "[]", "{}"]
-
+    return ((left + right) in ["()", "[]", "{}"])
 
 def find_mismatch(text):
     opening_brackets_stack = []
-    for i, next in enumerate(text):
-        if next in "([{":
-            # Process opening bracket, write your code here
-            pass
+    for i, char in enumerate(text):
+        if char in "([{":
+            
+            opening_brackets_stack.append(Bracket(char , i))
+            
 
-        if next in ")]}":
-            # Process closing bracket, write your code here
-            pass
+        if char in ")]}":
+            if not opening_brackets_stack:
+                return i + 1
+            if not are_matching (opening_brackets_stack.pop().char, char):
+                return i + 1     
+    if  opening_brackets_stack:
+        return opening_brackets_stack[0].position + 1
+    
+    return "Sucsess"
+
 
 
 def main():
-    text = input()
+    text = input().strip()
+
+
     mismatch = find_mismatch(text)
-    # Printing answer, write your code here
+    if mismatch == "Sucsess":
+        print("Sucsess")
+    else:
+        print(mismatch) 
 
 
 if __name__ == "__main__":
