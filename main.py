@@ -31,14 +31,10 @@ def find_mismatch(text):
 def main():
     text = input()
     if text[0] == "I":
-        text = input()
+        if len(text) > 10**5 : 
+            return
     mismatch = find_mismatch(text)
+    print(mismatch)
     
-    if not mismatch:
-        print("Sucsess")
-    else:
-        print(mismatch) 
-
-
 if __name__ == "__main__":
     main()
