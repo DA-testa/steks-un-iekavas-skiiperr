@@ -14,7 +14,7 @@ def find_mismatch(text):
         if char in "([{":
             
             opening_brackets_stack.append(Bracket(char , i))
-            
+
 
         if char in ")]}":
             if not opening_brackets_stack:
@@ -24,7 +24,7 @@ def find_mismatch(text):
     if  opening_brackets_stack:
         return opening_brackets_stack[0].position + 1
     
-    return "Sucsess"
+    return "Success"
 
 
 
@@ -37,7 +37,7 @@ def main():
     mismatch = find_mismatch(text)
     
     if not mismatch:
-        print("Sucsess")
+        print("Success")
     else:
         print(mismatch) 
 
