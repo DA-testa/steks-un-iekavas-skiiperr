@@ -1,5 +1,5 @@
 # python3
-
+# 221RDB187
 from collections import namedtuple
 
 Bracket = namedtuple("Bracket", ["char", "position"])
