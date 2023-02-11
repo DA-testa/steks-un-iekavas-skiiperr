@@ -29,11 +29,14 @@ def find_mismatch(text):
 
 
 def main():
-    text = input().strip()
-
-
+    text = input()
+    if "I" in text:
+        text = input()
+    if "F" in text:
+        pass
     mismatch = find_mismatch(text)
-    if mismatch == "Sucsess":
+    
+    if not mismatch:
         print("Sucsess")
     else:
         print(mismatch) 
