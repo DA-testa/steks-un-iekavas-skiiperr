@@ -13,18 +13,21 @@ def find_mismatch(text):
     for i, char in enumerate(text):
         if char in "([{":
             
-            opening_brackets_stack.append(Bracket(char , i))
+            opening_brackets_stack.append(char)
             
 
-        if char in ")]}":
-            if not opening_brackets_stack:
-                return i + 1
-            if not are_matching (opening_brackets_stack.pop().char, char):
-                return i + 1     
-    if  opening_brackets_stack:
-        return opening_brackets_stack[0].position + 1
-    
-    return "Sucsess"
+         if char in ")]}":
+            try:
+                if are_matching(opening_brackets_stack[-1], char):
+                    opening_brackets_stack.pop()
+                else:
+                    return i+1
+                pass
+            except:
+                return i+1
+    if len(opening_brackets_stack)!=0:
+            return i+1
+    return("Success")
 
 
 
