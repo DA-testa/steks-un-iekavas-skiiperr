@@ -10,16 +10,16 @@ def are_matching(left, right):
 
 def find_mismatch(text):
     opening_brackets_stack = []
-    for i, next in enumerate(text):
-        if next in "([{":
+    for i, char in enumerate(text):
+        if char in "([{":
             
-            opening_brackets_stack.append(i+1,next)
+            opening_brackets_stack.append(Bracket(char , i))
             
 
-        if next in ")]}":
+        if char in ")]}":
             if not opening_brackets_stack:
                 return i + 1
-            if not are_matching (opening_brackets_stack.pop().next, next):
+            if not are_matching (opening_brackets_stack.pop().char, char):
                 return i + 1     
     if  opening_brackets_stack:
         return opening_brackets_stack[0].position + 1
@@ -33,17 +33,6 @@ def main():
     if "I" in text:
         text = input()
     if "F" in text:
-        pass
-    mismatch = find_mismatch(text)
-    
-    if not mismatch:
-        print("Sucsess")
-    else:
-        print(mismatch) 
-
-
-if __name__ == "__main__":
-    main()
         pass
     mismatch = find_mismatch(text)
     
