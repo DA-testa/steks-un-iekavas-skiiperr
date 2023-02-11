@@ -34,7 +34,10 @@ def main():
         if len(text) > 10**5 : 
             return
     mismatch = find_mismatch(text)
-    print(mismatch)
-    
+    if(mismatch==0):
+        print("Success")
+    else:
+        print(mismatch) 
+
 if __name__ == "__main__":
     main()
